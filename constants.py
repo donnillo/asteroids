@@ -8,7 +8,7 @@ class Constant(enum.Enum):
     __str__ = __repr__
 
 
-class Screen(Constant):
+class Screen(int, Constant):
     WIDTH = 1280
     HEIGHT = 720
 

@@ -1,12 +1,17 @@
 import pygame
+from pygame import Color
 
 from constants import Screen
 
 
 def main():
-    print("Starting Asteroids!")
-    print(Screen.WIDTH)
-    print(Screen.HEIGHT)
+    screen = pygame.display.set_mode((Screen.WIDTH, Screen.HEIGHT))
+    while True:
+        screen.fill(Color("black"))
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
 
 
 if __name__ == "__main__":
