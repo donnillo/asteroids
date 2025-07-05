@@ -3,7 +3,11 @@ import enum
 
 class Constant(enum.Enum):
     def __repr__(self):
-        return f"{self.__class__.__name__} {self.name.lower()}: {self.value}"
+        return "{} {}: {}".format(
+            self.__class__.__name__,
+            self.name.replace("_", " ").lower(),
+            self.value
+        )
 
     __str__ = __repr__
 
