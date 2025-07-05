@@ -1,12 +1,12 @@
 import pygame
 
-import constants
+from constants import Screen
 
 
 def main():
     print("Starting Asteroids!")
-    print(f"Screen width: {constants.SCREEN_WIDTH}")
-    print(f"Screen height: {constants.SCREEN_HEIGHT}")
+    print(Screen.WIDTH)
+    print(Screen.HEIGHT)
 
 
 if __name__ == "__main__":

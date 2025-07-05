@@ -1,7 +1,20 @@
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
+import enum
 
-ASTEROID_MIN_RADIUS = 20
-ASTEROID_KINDS = 3
-ASTEROID_SPAWN_RATE = 0.8  # seconds
-ASTEROID_MAX_RADIUS = ASTEROID_MIN_RADIUS * ASTEROID_KINDS
+
+class Constant(enum.Enum):
+    def __repr__(self):
+        return f"{self.__class__.__name__} {self.name.lower()}: {self.value}"
+
+    __str__ = __repr__
+
+
+class Screen(Constant):
+    WIDTH = 1280
+    HEIGHT = 720
+
+
+class Asteroid(Constant):
+    MIN_RADIUS = 20
+    KINDS = 3
+    SPAWN_RATE = 0.8  # seconds
+    MAX_RADIUS = MIN_RADIUS * KINDS
