@@ -8,7 +8,7 @@ from player import Player
 def main():
     screen = pygame.display.set_mode(Screen.size)
     clock = pygame.time.Clock()
-    player = Player(Screen.WIDTH / 2, Screen.HEIGHT / 2)
+    player = Player(*Screen.center)
 
     while True:
         screen.fill(Color.BLACK)
