@@ -1,13 +1,15 @@
 import pygame
-from pygame import Color
 
-import constants as const
+import constants
+from constants import Color
 from circleshape import CircleShape
 
 
 class Player(CircleShape):
+    const = constants.Player
+
     def __init__(self, x: float, y: float):
-        super().__init__(x, y, const.Player.RADIUS)
+        super().__init__(x, y, self.const.RADIUS)
         self.rotation = 0
 
     def triangle(self):
@@ -20,4 +22,16 @@ class Player(CircleShape):
         return [a, b, c]
 
     def draw(self, screen):
-        pygame.draw.polygon(screen, Color("white"), self.triangle(), 2)
+        pygame.draw.polygon(screen, Color.WHITE, self.triangle(), 2)
+
+    def rotate(self, dt: float):
+        self.rotation += self.const.TURN_SPEED * dt
+
+    def update(self, dt):
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_a]:
+            self.rotate(-dt)
+
+        if keys[pygame.K_d]:
+            self.rotate(dt)
