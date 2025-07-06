@@ -1,7 +1,7 @@
 import enum
 
 
-class Constant(enum.Enum):
+class Constant(float, enum.Enum):
     def __repr__(self):
         return "{} {}: {}".format(
             self.__class__.__name__,
@@ -12,7 +12,7 @@ class Constant(enum.Enum):
     __str__ = __repr__
 
 
-class Screen(int, Constant):
+class Screen(Constant):
     WIDTH = 1280
     HEIGHT = 720
 
@@ -22,3 +22,7 @@ class Asteroid(Constant):
     KINDS = 3
     SPAWN_RATE = 0.8  # seconds
     MAX_RADIUS = MIN_RADIUS * KINDS
+
+
+class Player(Constant):
+    RADIUS = 20
