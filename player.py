@@ -1,12 +1,12 @@
 import pygame
 
+import shapes
 import constants
 from constants import Color
-from circleshape import CircleShape
 from groups import UPDATABLE, DRAWABLE
 
 
-class Player(CircleShape, groups=(UPDATABLE, DRAWABLE)):
+class Player(shapes.Circle, groups=(UPDATABLE, DRAWABLE)):
     const = constants.Player
 
     def __init__(self, at):

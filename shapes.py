@@ -3,7 +3,7 @@ import pygame
 from groups import Groupable
 
 
-class CircleShape(Groupable, pygame.sprite.Sprite):
+class Circle(Groupable, pygame.sprite.Sprite):
     """Base class for game objects"""
 
     def __init__(self, at: pygame.math.Vector2, *, radius: float):
