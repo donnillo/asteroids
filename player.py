@@ -3,9 +3,10 @@ import pygame
 import constants
 from constants import Color
 from circleshape import CircleShape
+from groups import UPDATABLE, DRAWABLE
 
 
-class Player(CircleShape):
+class Player(CircleShape, groups=(UPDATABLE, DRAWABLE)):
     const = constants.Player
 
     def __init__(self, x: float, y: float):
