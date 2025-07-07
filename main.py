@@ -6,9 +6,9 @@ from player import Player
 
 
 def main():
-    screen = pygame.display.set_mode(Screen.size)
+    screen = pygame.display.set_mode(Screen.HD.size)
     clock = pygame.time.Clock()
-    player = Player(at=Screen.center)
+    player = Player(at=Screen.HD.center)
 
     while True:
         screen.fill(Color.BLACK)

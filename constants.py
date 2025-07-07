@@ -1,4 +1,5 @@
 import enum
+from typing import NamedTuple
 
 import pygame
 
@@ -15,20 +16,25 @@ class NumericConstant(float, enum.Enum):
         return f"{self.value:.6f}".rstrip("0").rstrip(".")
 
 
-class Screen(NumericConstant):
-    WIDTH = 1280
-    HEIGHT = 720
+class Resolution(NamedTuple):
+    width: int
+    height: int
 
-    class Size:
-        def __get__(self, _, owner):
-            return pygame.math.Vector2(owner.WIDTH, owner.HEIGHT)
+    @property
+    def size(self):
+        return pygame.math.Vector2(self.width, self.height)
 
-    class Center:
-        def __get__(self, _, owner):
-            return pygame.math.Vector2(owner.WIDTH / 2, owner.HEIGHT / 2)
+    @property
+    def center(self):
+        return self.size / 2
 
-    size = Size()
-    center = Center()
+    def __repr__(self):
+        return f"{self.width}x{self.height}"
+
+
+class Screen(Resolution, enum.Enum):
+    HD = 1280, 720
+    FullHD = 1920, 1080
 
 
 class Asteroid(NumericConstant):
