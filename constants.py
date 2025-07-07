@@ -4,16 +4,9 @@ from typing import NamedTuple
 import pygame
 
 
-class NumericConstant(float, enum.Enum):
+class NumericConstant(enum.IntEnum):
     def __str__(self):
-        return "{} {}: {}".format(
-            self.__class__.__name__,
-            self.name.replace("_", " ").lower(),
-            repr(self)
-        )
-
-    def __repr__(self):
-        return f"{self.value:.6f}".rstrip("0").rstrip(".")
+        return f"{self.__class__.__name__}.{self.name}: {self.value}"
 
 
 class Resolution(NamedTuple):
@@ -43,7 +36,7 @@ DEFAULT_SCREEN = Screen.HD
 class Asteroid(NumericConstant):
     MIN_RADIUS = 20
     KINDS = 3
-    SPAWN_RATE = 0.8  # seconds
+    SPAWN_RATE = 800  # milliseconds
     MAX_RADIUS = MIN_RADIUS * KINDS
 
 
