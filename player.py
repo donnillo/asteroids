@@ -9,8 +9,8 @@ from groups import UPDATABLE, DRAWABLE
 class Player(CircleShape, groups=(UPDATABLE, DRAWABLE)):
     const = constants.Player
 
-    def __init__(self, x: float, y: float):
-        super().__init__(x, y, self.const.RADIUS)
+    def __init__(self, at):
+        super().__init__(at, radius=self.const.RADIUS)
         self.rotation = 0
 
     @property
