@@ -1,5 +1,7 @@
-import pygame
 import random
+
+import pygame
+
 from asteroid import Asteroid
 from constants import DEFAULT_SCREEN as SCREEN
 from groups import Groupable, UPDATABLE
