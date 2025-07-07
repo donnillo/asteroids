@@ -1,14 +1,14 @@
 import pygame
 
-from constants import Screen
+from constants import DEFAULT_SCREEN as SCREEN
 from constants import Color
 from player import Player
 
 
 def main():
-    screen = pygame.display.set_mode(Screen.HD.size)
+    screen = pygame.display.set_mode(SCREEN.size)
     clock = pygame.time.Clock()
-    player = Player(at=Screen.HD.center)
+    player = Player(at=SCREEN.center)
 
     while True:
         screen.fill(Color.BLACK)

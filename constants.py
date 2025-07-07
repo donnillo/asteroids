@@ -37,6 +37,9 @@ class Screen(Resolution, enum.Enum):
     FullHD = 1920, 1080
 
 
+DEFAULT_SCREEN = Screen.HD
+
+
 class Asteroid(NumericConstant):
     MIN_RADIUS = 20
     KINDS = 3
