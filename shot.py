@@ -9,9 +9,8 @@ from groups import SHOTS, UPDATABLE, DRAWABLE
 class Shot(shapes.Circle, groups=(SHOTS, UPDATABLE, DRAWABLE)):
     const = constants.Shot
 
-    def __init__(self, at, *, velocity: pygame.math.Vector2):
+    def __init__(self, at):
         super().__init__(at, radius=self.const.RADIUS)
-        self.velocity = velocity
 
     def draw(self, screen):
         pygame.draw.circle(screen, Color.WHITE, self.position, self.radius, 2)
