@@ -9,6 +9,7 @@ import pygame
 UPDATABLE = pygame.sprite.Group()
 DRAWABLE = pygame.sprite.Group()
 ASTEROIDS = pygame.sprite.Group()
+SHOTS = pygame.sprite.Group()
 
 
 class GroupCollection:

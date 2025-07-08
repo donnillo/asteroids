@@ -44,6 +44,11 @@ class Player(NumericConstant):
     RADIUS = 20
     TURN_SPEED = 300
     SPEED = 200
+    SHOT_SPEED = 500
+
+
+class Shot(NumericConstant):
+    RADIUS = 5
 
 
 class Color(pygame.Color, enum.Enum):

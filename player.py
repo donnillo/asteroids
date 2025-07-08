@@ -4,6 +4,7 @@ import shapes
 import constants
 from constants import Color
 from groups import UPDATABLE, DRAWABLE
+from shot import Shot
 
 
 class Player(shapes.Circle, groups=(UPDATABLE, DRAWABLE)):
@@ -47,3 +48,11 @@ class Player(shapes.Circle, groups=(UPDATABLE, DRAWABLE)):
 
         if keys[pygame.K_w]:
             self.move(dt)
+
+        if keys[pygame.K_SPACE]:
+            self.shoot()
+
+    def shoot(self):
+        shot_velocity = pygame.math.Vector2(0, 1).rotate(self.rotation)
+        shot_velocity *= self.const.SHOT_SPEED
+        shot = Shot(self.position, velocity=shot_velocity)
