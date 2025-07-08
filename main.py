@@ -6,14 +6,14 @@ from constants import DEFAULT_SCREEN as SCREEN
 from constants import Color
 from player import Player
 from asteroidfield import AsteroidField
-from groups import UPDATABLE, DRAWABLE, ASTEROIDS
+from groups import UPDATABLE, DRAWABLE
 
 
 def main():
     screen = pygame.display.set_mode(SCREEN.size)
     clock = pygame.time.Clock()
     player = Player(at=SCREEN.center)
-    asteroids = AsteroidField()
+    asteroids = AsteroidField.populate()
 
     while True:
         screen.fill(Color.BLACK)
@@ -24,7 +24,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
         UPDATABLE.update(clock.tick(60) / 1000)
-        for asteroid in ASTEROIDS:
+        for asteroid in asteroids:
             if player.is_colliding(asteroid):
                 print("Game over!")
                 sys.exit(1)
