@@ -1,10 +1,12 @@
+import sys
+
 import pygame
 
 from constants import DEFAULT_SCREEN as SCREEN
 from constants import Color
 from player import Player
 from asteroidfield import AsteroidField
-from groups import UPDATABLE, DRAWABLE
+from groups import UPDATABLE, DRAWABLE, ASTEROIDS
 
 
 def main():
@@ -22,6 +24,10 @@ def main():
             if event.type == pygame.QUIT:
                 return
         UPDATABLE.update(clock.tick(60) / 1000)
+        for asteroid in ASTEROIDS:
+            if player.is_colliding(asteroid):
+                print("Game over!")
+                sys.exit(1)
 
 
 if __name__ == "__main__":
