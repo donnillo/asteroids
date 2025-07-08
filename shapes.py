@@ -1,5 +1,3 @@
-from typing import Self
-
 import pygame
 
 from groups import Groupable
@@ -14,7 +12,7 @@ class Circle(Groupable, pygame.sprite.Sprite):
         self.velocity = pygame.Vector2(0, 0)
         self.radius = radius
 
-    def is_colliding(self, other: Self) -> bool:
+    def is_colliding(self, other: "Circle") -> bool:
         return self.position.distance_to(other.position) <= self.radius + other.radius
 
     def draw(self, screen):

@@ -6,7 +6,9 @@ from constants import DEFAULT_SCREEN as SCREEN
 from constants import Color
 from player import Player
 from asteroidfield import AsteroidField
-from groups import UPDATABLE, DRAWABLE
+from groups import UPDATABLE, DRAWABLE, SHOTS
+from groups import GenericGroup
+from shot import Shot
 
 
 def main():
@@ -14,6 +16,7 @@ def main():
     clock = pygame.time.Clock()
     player = Player(at=SCREEN.center)
     asteroids = AsteroidField.populate()
+    shots: GenericGroup[Shot] = SHOTS
 
     while True:
         screen.fill(Color.BLACK)
@@ -28,6 +31,9 @@ def main():
             if player.is_colliding(asteroid):
                 print("Game over!")
                 sys.exit(1)
+            for shot in shots:
+                if asteroid.is_colliding(shot):
+                    asteroid.kill()
 
 
 if __name__ == "__main__":

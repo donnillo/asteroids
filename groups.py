@@ -1,6 +1,7 @@
 from abc import ABC
 from collections import defaultdict
 from collections.abc import Collection
+from collections.abc import Iterator
 from typing import Optional
 
 import pygame
@@ -8,8 +9,15 @@ import pygame
 
 UPDATABLE = pygame.sprite.Group()
 DRAWABLE = pygame.sprite.Group()
-ASTEROIDS = pygame.sprite.Group()
-SHOTS = pygame.sprite.Group()
+
+
+class GenericGroup[S: pygame.sprite.Sprite](pygame.sprite.Group):
+    def __iter__(self) -> Iterator[S]:
+        return super().__iter__()
+
+
+ASTEROIDS: GenericGroup = GenericGroup()
+SHOTS: GenericGroup = GenericGroup()
 
 
 class GroupCollection:

@@ -4,7 +4,7 @@ import pygame
 
 from asteroid import Asteroid
 from constants import DEFAULT_SCREEN as SCREEN
-from groups import Groupable, UPDATABLE, ASTEROIDS
+from groups import Groupable, GenericGroup, UPDATABLE, ASTEROIDS
 
 
 class AsteroidField(Groupable, pygame.sprite.Sprite, groups=(UPDATABLE,)):
@@ -58,6 +58,6 @@ class AsteroidField(Groupable, pygame.sprite.Sprite, groups=(UPDATABLE,)):
             self.spawn(Asteroid.const.MIN_RADIUS * kind, position, velocity)
 
     @classmethod
-    def populate(cls) -> pygame.sprite.Group:
+    def populate(cls) -> GenericGroup[Asteroid]:
         cls()
         return ASTEROIDS
