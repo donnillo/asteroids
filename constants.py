@@ -45,6 +45,7 @@ class Player(NumericConstant):
     TURN_SPEED = 300
     SPEED = 200
     SHOT_SPEED = 500
+    SHOOT_COOLDOWN = 300  # milliseconds
 
 
 class Shot(NumericConstant):

@@ -13,6 +13,7 @@ class Player(shapes.Circle, groups=(UPDATABLE, DRAWABLE)):
     def __init__(self, at):
         super().__init__(at, radius=self.const.RADIUS)
         self.rotation = 0
+        self.shoot_timer = 0.0
 
     @property
     def triangle(self):
@@ -35,6 +36,7 @@ class Player(shapes.Circle, groups=(UPDATABLE, DRAWABLE)):
         self.position += movement * self.const.SPEED * dt
 
     def update(self, dt):
+        self.shoot_timer -= dt
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_a]:
@@ -53,6 +55,8 @@ class Player(shapes.Circle, groups=(UPDATABLE, DRAWABLE)):
             self.shoot()
 
     def shoot(self):
-        shot = Shot(self.position)
-        shot.velocity = pygame.math.Vector2(0, 1).rotate(
-            self.rotation) * self.const.SHOT_SPEED
+        if self.shoot_timer <= 0:
+            shot = Shot(self.position)
+            shot.velocity = pygame.math.Vector2(0, 1).rotate(
+                self.rotation) * self.const.SHOT_SPEED
+        self.shoot_timer = self.const.SHOOT_COOLDOWN / 1000
