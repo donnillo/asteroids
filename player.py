@@ -59,4 +59,4 @@ class Player(shapes.Circle, groups=(UPDATABLE, DRAWABLE)):
             shot = Shot(self.position)
             shot.velocity = pygame.math.Vector2(0, 1).rotate(
                 self.rotation) * self.const.SHOT_SPEED
-        self.shoot_timer = self.const.SHOOT_COOLDOWN / 1000
+            self.shoot_timer = self.const.SHOOT_COOLDOWN / 1000
