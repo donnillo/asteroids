@@ -4,6 +4,8 @@ import shapes
 import constants
 from constants import Color
 from groups import SHOTS, UPDATABLE, DRAWABLE
+from explosion import Explosion
+from asteroid import Asteroid
 
 
 class Shot(shapes.Circle, groups=(SHOTS, UPDATABLE, DRAWABLE)):
@@ -17,3 +19,8 @@ class Shot(shapes.Circle, groups=(SHOTS, UPDATABLE, DRAWABLE)):
 
     def update(self, dt):
         self.position += self.velocity * dt
+
+    def explode(self, asteroid: Asteroid):
+        self.kill()
+        asteroid.split()
+        Explosion((self.position + asteroid.position) / 2, size=asteroid.kind)

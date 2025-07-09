@@ -52,6 +52,11 @@ class Shot(NumericConstant):
     RADIUS = 5
 
 
+class Explosion(NumericConstant):
+    NUM_FRAMES = 7
+    FRAME_TIME = 70  # milliseconds
+
+
 class Color(pygame.Color, enum.Enum):
     BLACK = "black"
     WHITE = "white"

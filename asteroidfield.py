@@ -39,8 +39,8 @@ class AsteroidField(Groupable, pygame.sprite.Sprite, groups=(UPDATABLE,)):
         super().__init__(*self.__class__.containers)
         self.spawn_timer = 0.0
 
-    def spawn(self, radius, position, velocity):
-        asteroid = Asteroid(position, radius=radius)
+    def spawn(self, radius, position, velocity, kind):
+        asteroid = Asteroid(position, radius, kind)
         asteroid.velocity = velocity
 
     def update(self, dt):
@@ -55,7 +55,8 @@ class AsteroidField(Groupable, pygame.sprite.Sprite, groups=(UPDATABLE,)):
             velocity = velocity.rotate(random.randint(-30, 30))
             position = edge[1](random.uniform(0, 1))
             kind = random.randint(1, Asteroid.const.KINDS)
-            self.spawn(Asteroid.const.MIN_RADIUS * kind, position, velocity)
+            self.spawn(Asteroid.const.MIN_RADIUS *
+                       kind, position, velocity, kind)
 
     @classmethod
     def populate(cls) -> GenericGroup[Asteroid]:

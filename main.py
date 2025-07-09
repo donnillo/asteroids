@@ -33,8 +33,7 @@ def main():
                 sys.exit(1)
             for shot in shots:
                 if asteroid.is_colliding(shot):
-                    asteroid.split()
-                    shot.kill()
+                    shot.explode(asteroid)
 
 
 if __name__ == "__main__":
