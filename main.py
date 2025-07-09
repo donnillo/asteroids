@@ -25,7 +25,7 @@ def main():
         pygame.display.flip()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
+                sys.exit(0)
         UPDATABLE.update(clock.tick(60) / 1000)
         for asteroid in asteroids:
             if player.is_colliding(asteroid):
@@ -33,7 +33,8 @@ def main():
                 sys.exit(1)
             for shot in shots:
                 if asteroid.is_colliding(shot):
-                    asteroid.kill()
+                    asteroid.split()
+                    shot.kill()
 
 
 if __name__ == "__main__":
